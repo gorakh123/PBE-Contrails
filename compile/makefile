@@ -6,7 +6,7 @@ SRC=../src
 DIR=..
 
 # Name of the executable
-EXE=cpmod
+EXE=cpmod.exe
 
 # Compilation with GNU Fortran
 # Settings for release (optimised):
@@ -32,14 +32,14 @@ all: $(EXE)
 # Build executable & place it in directory
 $(EXE): $(OBJECTS)
 	$(FC) $(FLAGS) $(addprefix $(OBJ)/,$(OBJECTS)) -o $@
-	mv $(EXE) $(DIR)
+	move $(EXE) $(DIR)
 	@echo Creating $(EXE) ..
 
 $(OBJ)/%.o: $(SRC)/%.f
-	$(FC) $(FLAGS) -c $<;
+	$(FC) $(FLAGS) -c $<
 
 $(OBJ)/%.o: $(SRC)/%.f90
-	$(FC) $(FLAGS) -c $<;
+	$(FC) $(FLAGS) -c $<
 
 clean:
-	rm -f $(OBJ)/*.o $(OBJ)/*.mod ../cpmod
+	del /Q $(OBJ)\*.o $(OBJ)\*.mod $(DIR)\cpmod 2>nul
